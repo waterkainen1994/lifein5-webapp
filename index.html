@@ -53,8 +53,9 @@
     tg.expand();
 
     document.getElementById("buy").addEventListener("click", () => {
-      tg.close();
+      document.getElementById("buy").innerText = "⏳ Покупка...";
       tg.sendData(JSON.stringify({ event: "buy_3_events" }));
+      tg.close();
     });
   </script>
 </body>
