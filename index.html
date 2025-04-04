@@ -1,62 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <title>Покупка прогноза</title>
+  <meta charset="UTF-8">
+  <title>Тест WebApp</title>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <style>
     body {
       font-family: sans-serif;
-      background: #f4f4f4;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
       margin: 0;
-      padding: 30px;
-      text-align: center;
     }
-    .box {
+    .container {
       background: white;
-      border-radius: 10px;
       padding: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    h1 {
-      font-size: 22px;
-      margin-bottom: 10px;
-    }
-    p {
-      font-size: 16px;
-      color: #555;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
     }
     button {
       padding: 12px 24px;
       font-size: 16px;
-      background: #0088cc;
       border: none;
       border-radius: 8px;
+      background-color: #0088cc;
       color: white;
       cursor: pointer;
-      margin-top: 20px;
     }
     button:hover {
-      background: #007ab8;
+      background-color: #007ab8;
     }
   </style>
 </head>
 <body>
-  <div class="box">
-    <h1>3 события в будущем</h1>
-    <p>ИИ раскроет, что произойдёт, если ты не изменишь свой жизненный сценарий.</p>
-    <button id="buy">Купить за 99 звёзд</button>
+  <div class="container">
+    <h2>Тестовая покупка</h2>
+    <p>Проверь, работает ли WebApp sendData</p>
+    <button id="send">Отправить в бота</button>
   </div>
 
   <script>
     const tg = window.Telegram.WebApp;
     tg.expand();
 
-    document.getElementById("buy").addEventListener("click", () => {
-      document.getElementById("buy").innerText = "⏳ Отправка...";
-      tg.sendData(JSON.stringify({ event: "buy_3_events" })); // теперь отправляется объект!
+    document.getElementById("send").addEventListener("click", () => {
+      tg.sendData(JSON.stringify({ event: "test_signal" }));
       alert("✅ Данные отправлены");
-      setTimeout(() => tg.close(), 300);
+      setTimeout(() => tg.close(), 500);
     });
   </script>
 </body>
