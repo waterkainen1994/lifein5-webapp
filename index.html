@@ -53,9 +53,10 @@
     tg.expand();
 
     document.getElementById("buy").addEventListener("click", () => {
-      alert("🧪 Кнопка нажата!"); // проверка
-      tg.sendData(JSON.stringify({ event: "buy_3_events" }));
-      tg.close();
+      document.getElementById("buy").innerText = "⏳ Отправка...";
+      tg.sendData("buy_3_events");
+      alert("✅ Данные отправлены");
+      setTimeout(() => tg.close(), 300);
     });
   </script>
 </body>
