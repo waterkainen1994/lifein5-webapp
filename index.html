@@ -54,7 +54,7 @@
 
     document.getElementById("buy").addEventListener("click", () => {
       document.getElementById("buy").innerText = "⏳ Отправка...";
-      tg.sendData("buy_3_events");
+      tg.sendData(JSON.stringify({ event: "buy_3_events" })); // теперь отправляется объект!
       alert("✅ Данные отправлены");
       setTimeout(() => tg.close(), 300);
     });
