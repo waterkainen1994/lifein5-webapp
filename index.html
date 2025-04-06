@@ -2,12 +2,13 @@
 <html>
 <head>
   <meta charset="UTF-8" />
-  <title>3 события в будущем</title>
+  <title>Покупка прогноза</title>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <style>
     body {
-      background: #f4f4f4;
       font-family: sans-serif;
+      background: #f4f4f4;
+      margin: 0;
       padding: 30px;
       text-align: center;
     }
@@ -19,9 +20,9 @@
     }
     button {
       padding: 12px 24px;
+      font-size: 16px;
       background: #0088cc;
       color: white;
-      font-size: 16px;
       border: none;
       border-radius: 8px;
       cursor: pointer;
@@ -30,19 +31,24 @@
 </head>
 <body>
   <div class="box">
-    <h2>3 события в будущем</h2>
-    <p>ИИ покажет, что произойдёт, если ты не изменишь сценарий.</p>
-    <button id="buyBtn">Купить за 99 звёзд</button>
+    <h2>Тестовая покупка</h2>
+    <p>Проверь, работает ли WebApp sendData</p>
+    <button id="buy">Отправить в бота</button>
   </div>
 
   <script>
     window.addEventListener('DOMContentLoaded', () => {
-      const tg = window.Telegram.WebApp;
-      tg.ready();  // Гарантирует, что бот готов к sendData
+      console.log("✅ DOM загружен");
 
-      document.getElementById('buyBtn').addEventListener('click', () => {
-        tg.sendData(JSON.stringify({ event: 'buy_3_events' }));
-        tg.close(); // Закрыть окно WebApp
+      const tg = window.Telegram.WebApp;
+      tg.ready();
+      console.log("✅ Telegram WebApp готов");
+
+      document.getElementById("buy").addEventListener("click", () => {
+        console.log("📤 Отправка данных в бота...");
+        tg.sendData(JSON.stringify({ event: "buy_3_events" }));
+        tg.close();
+        console.log("✅ tg.sendData вызван, окно закрыто");
       });
     });
   </script>
