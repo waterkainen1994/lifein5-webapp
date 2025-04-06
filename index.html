@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <title>3 события в будущем</title>
@@ -9,53 +9,59 @@
       font-family: sans-serif;
       background: #f4f4f4;
       margin: 0;
-      padding: 30px;
-      text-align: center;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
-    .box {
+    .card {
       background: white;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+    h2 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 15px;
+      color: #444;
     }
     button {
-      padding: 12px 24px;
-      font-size: 16px;
-      background: #0088cc;
+      background-color: #0088cc;
+      color: white;
+      padding: 14px 28px;
+      font-size: 15px;
       border: none;
       border-radius: 8px;
-      color: white;
       cursor: pointer;
       margin-top: 20px;
     }
     button:hover {
-      background: #007ab8;
+      background-color: #007ab8;
     }
   </style>
 </head>
 <body>
-  <div class="box">
-    <h2><b>3 события в будущем</b></h2>
+  <div class="card">
+    <h2>3 события в будущем</h2>
     <p>ИИ раскроет, что произойдёт, если ты не изменишь свой жизненный сценарий.</p>
-    <button id="buyBtn">Купить за 98 звёзд</button>
+    <button id="buy">Купить за 99 звёзд</button>
   </div>
 
   <script>
     const tg = window.Telegram.WebApp;
     tg.expand();
 
-    console.log("✅ WebApp loaded");
-
-    document.getElementById("buyBtn").addEventListener("click", () => {
-      console.log("🧾 Кнопка нажата");
-      const payload = JSON.stringify({ event: "buy_3_events" });
-      try {
-        tg.sendData(payload);
-        console.log("📤 Отправлено через sendData:", payload);
-        tg.close();
-      } catch (err) {
-        console.error("❌ Ошибка при отправке:", err);
-      }
+    document.getElementById("buy").addEventListener("click", () => {
+      console.log("🟦 Кнопка нажата");
+      tg.sendData(JSON.stringify({ event: "buy_3_events" }));
+      tg.close();
     });
   </script>
 </body>
